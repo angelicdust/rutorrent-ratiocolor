@@ -29,32 +29,32 @@ colors = [  [255, 0, 0],
 // what to change:
 // cell-background
 // font
-changeWhat = "cell-background";
+changeWhat = "font";
 
 settings = false; // not yet working as it should
-         
+
 /* Example
 If ratio is 0 the color will be the first definde color. The the more the ratio approach
-the next level the more it goes towards the next color. When the ratio is more then 
+the next level the more it goes towards the next color. When the ratio is more then
 the last level it will have the color of the last color.
 */
 
 /****************/
 
 function colorSub(a, b){
-    return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];  
+    return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
 }
 
 function colorAdd(a, b){
-    return [a[0] + b[0], a[1] + b[1], a[2] + b[2]];  
+    return [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
 }
 
 function colorMul(a, mul){
-    return [Math.floor(a[0] * mul), Math.floor(a[1] * mul), Math.floor(a[2] * mul)];  
+    return [Math.floor(a[0] * mul), Math.floor(a[1] * mul), Math.floor(a[2] * mul)];
 }
 
 function colorRGB(color){
-    return "rgb(" + color[0] + ", " + color[1] + ", " + color[2] + ")";    
+    return "rgb(" + color[0] + ", " + color[1] + ", " + color[2] + ")";
 }
 
 theWebUI.setRatioColors = function(){
@@ -62,32 +62,32 @@ theWebUI.setRatioColors = function(){
         ratio = $(this).children("div")[0].innerHTML
         color = null;
         proc = 0;
-        
+
         $.each(levels, function(index, level){
             if(ratio < level){
                 leveldiff = level - levels[index - 1];
                 proc = (ratio - levels[index - 1]) / leveldiff;
-                
+
                 diffColor = colorSub(colors[index], colors[index - 1]);
-                
+
                 color = colorAdd(colorMul(diffColor, proc), colors[index - 1]);
-                
-                return false;           
+
+                return false;
             }
         });
-       
+
         if(color === null){
             color = colors[colors.length - 1];
         }
-        
+
         switch(changeWhat)
         {
             case "font":
-                $(this).css("color", colorRGB(color));  
+                $(this).css("color", colorRGB(color));
                 break;
             case "cell-background":
             default:
-                $(this).css("background-color", colorRGB(color));  
+                $(this).css("background-color", colorRGB(color));
                 $(this).css("background-image", "none");
                 break;
         }
@@ -97,7 +97,7 @@ theWebUI.setRatioColors = function(){
 plugin.onLangLoaded = function() {
     if(this.enabled) {
        error = false;
-       
+
        // Error checking
        if(colors.length != levels.length){
            log(theUILang.ratiocolorLengthError);
@@ -107,7 +107,7 @@ plugin.onLangLoaded = function() {
            log(theUILang.ratiocolorLevel0);
            error = true;
        }
-       
+
        if(!error){
            plugin.tempFunc = theWebUI.tables.trt.obj.refreshRows;
           theWebUI.tables.trt.obj.refreshRows = function(height, fromScroll){
@@ -118,8 +118,8 @@ plugin.onLangLoaded = function() {
                 rcSettingsDiv = $('<div>').attr("id","st_ratiocolor");
                 fieldset = $('<fieldset>').html("<legend>" + theUILang.ratiocolorLegend + "</legend>");
                 fieldset.append(theWebUI.ratiocolorLevelsbar(levels, colors));
-               
-               
+
+
                 // New level add
                 divAdd = $('<div>').attr("id", "ratiocolorAddNewLevel");
                 divAdd.html('Level: <input id="rcAddLvl" type="text" /><br />Color: #<input id="rcAddColor" type="text" />')
@@ -134,7 +134,7 @@ plugin.onLangLoaded = function() {
                 });
                 divAdd.append(btnAdd);
                 fieldset.append(divAdd);
-               
+
                 rcSettingsDiv.append(fieldset);
                 typehis.attachPageToOptions(rcSettingsDiv[0], theUILang.ratiocolorSettings);
             }
@@ -151,7 +151,7 @@ theWebUI.ratiocolorLevelsbar = function(levels, colors){
        level.attr("style", "background-image: -webkit-gradient(linear, 0% 0%, 100% 0%, from(" + colorRGB(colors[i-1]) + "), to(" + colorRGB(colors[i]) + "));");
        level.css("width", width);
         div.append(level[0]);
-       
+
    }
    return div;
 }
