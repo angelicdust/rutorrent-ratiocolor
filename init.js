@@ -18,18 +18,19 @@ plugin.loadMainCSS();
 levels = [0, 1, 3, 30];
 
 // Colors of the diffrent levels. [r, g, b]
-colors = [  [255, 0, 0],
-            [255, 255, 0],
-            [0, 255, 0],
-            [123, 17, 203]
+colors = [  [255, 0, 0],   //rgba(255,0,0,.5)
+            [255, 255, 0], //rgba(255,255,0,.5)
+            [0, 255, 0],   //rgba(125,255,125,.5)
+            [123, 17, 203] //rgba(123,17,203,.5)
          ];
+colorOpacity = '.5';
 
 //changeWhatEnum = ["cell-background", "font"];
 
 // what to change:
 // cell-background
 // font
-changeWhat = "font";
+changeWhat = "cell-background";
 
 settings = false; // not yet working as it should
 
@@ -54,7 +55,7 @@ function colorMul(a, mul){
 }
 
 function colorRGB(color){
-    return "rgb(" + color[0] + ", " + color[1] + ", " + color[2] + ")";
+    return "rgba(" + color[0] + ", " + color[1] + ", " + color[2] + ", " + colorOpacity + ")";
 }
 
 theWebUI.setRatioColors = function(){
