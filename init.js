@@ -18,11 +18,12 @@ plugin.loadMainCSS();
 levels = [0, 1, 3, 30];
 
 // Colors of the diffrent levels. [r, g, b]
-colors = [  [255, 0, 0],   //rgba(255,0,0,.5)
-            [255, 255, 0], //rgba(255,255,0,.5)
-            [0, 255, 0],   //rgba(125,255,125,.5)
-            [123, 17, 203] //rgba(123,17,203,.5)
+colors = [  [255, 0, 0],
+            [255, 255, 0],
+            [0, 255, 0],
+            [123, 17, 203]
          ];
+
 colorOpacity = '.5';
 
 //changeWhatEnum = ["cell-background", "font"];
@@ -33,6 +34,8 @@ colorOpacity = '.5';
 changeWhat = "cell-background";
 
 settings = false; // not yet working as it should
+
+important = "!important\;"; //Adding support for other themes using the important-CSS trick
 
 /* Example
 If ratio is 0 the color will be the first definde color. The the more the ratio approach
@@ -88,7 +91,7 @@ theWebUI.setRatioColors = function(column){
                 break;
             case "cell-background":
             default:
-                $(this).css("background-color", colorRGB(color));
+                $(this).css("cssText", "background-color:" + colorRGB(color) + important);
                 $(this).css("background-image", "none");
                 break;
         }
