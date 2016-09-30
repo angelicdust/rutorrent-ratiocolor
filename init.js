@@ -1,6 +1,6 @@
 /***
 Ratiocolors!
-Change the color of the ratio column according to the ratio
+Change the color of all the ratio column according to the ratio
 Written by Gyran
 ***/
 
@@ -58,8 +58,8 @@ function colorRGB(color){
     return "rgba(" + color[0] + ", " + color[1] + ", " + color[2] + ", " + colorOpacity + ")";
 }
 
-theWebUI.setRatioColors = function(){
-    $(".stable-List-col-6").each(function(index) {
+theWebUI.setRatioColors = function(column){
+    $(column).each(function(index) {
         ratio = $(this).children("div")[0].innerHTML
         color = null;
         proc = 0;
@@ -113,7 +113,10 @@ plugin.onLangLoaded = function() {
            plugin.tempFunc = theWebUI.tables.trt.obj.refreshRows;
           theWebUI.tables.trt.obj.refreshRows = function(height, fromScroll){
                plugin.tempFunc.call(theWebUI.tables.trt.obj, height, fromScroll);
-               theWebUI.setRatioColors();
+               theWebUI.setRatioColors(".stable-List-col-6");
+               theWebUI.setRatioColors(".stable-List-col-20");
+               theWebUI.setRatioColors(".stable-List-col-21");
+               theWebUI.setRatioColors(".stable-List-col-22");
             };
             if(settings){
                 rcSettingsDiv = $('<div>').attr("id","st_ratiocolor");
