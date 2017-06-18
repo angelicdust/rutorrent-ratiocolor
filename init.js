@@ -93,6 +93,7 @@ theWebUI.setRatioColors = function(column){
             default:
                 $(this).css("cssText", "background-color:" + colorRGB(color) + important);
                 $(this).css("background-image", "none");
+                $(this).css("text-align", "right");
                 break;
         }
     });
@@ -117,9 +118,9 @@ plugin.onLangLoaded = function() {
           theWebUI.tables.trt.obj.refreshRows = function(height, fromScroll){
                plugin.tempFunc.call(theWebUI.tables.trt.obj, height, fromScroll);
                theWebUI.setRatioColors(".stable-List-col-6");
-               theWebUI.setRatioColors(".stable-List-col-20");
                theWebUI.setRatioColors(".stable-List-col-21");
                theWebUI.setRatioColors(".stable-List-col-22");
+               theWebUI.setRatioColors(".stable-List-col-23");
             };
             if(settings){
                 rcSettingsDiv = $('<div>').attr("id","st_ratiocolor");
