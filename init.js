@@ -19,9 +19,9 @@ levels = [0, 1, 3, 30];
 
 // Colors of the diffrent levels. [r, g, b]
 colors = [  [255, 0, 0],
-            [255, 255, 0],
-            [0, 255, 0],
-            [123, 17, 203]
+            [255, 155, 50],
+            [0, 220, 0],
+            [0, 155, 255]
          ];
 
 colorOpacity = '.5';
@@ -91,7 +91,7 @@ theWebUI.setRatioColors = function(column){
                 break;
             case "cell-background":
             default:
-                $(this).css("cssText", "background-color:" + colorRGB(color) + important);
+                $(this).attr('style', function(i, s) { return s.replace(/background-color:(.*?);/, '') + 'background-color:' + colorRGB(color) + important });
                 $(this).css("background-image", "none");
                 $(this).css("text-align", "right");
                 break;
