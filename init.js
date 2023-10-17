@@ -131,9 +131,9 @@ plugin.onLangLoaded = function() {
           theWebUI.tables.trt.obj.refreshRows = function(height, fromScroll){
                plugin.tempFunc.call(theWebUI.tables.trt.obj, height, fromScroll);
                theWebUI.setRatioColors(".stable-List-col-6");
-               theWebUI.setRatioColors(".stable-List-col-21");
-               theWebUI.setRatioColors(".stable-List-col-22");
-               theWebUI.setRatioColors(".stable-List-col-23");
+               theWebUI.setRatioColors(".stable-List-col-24");
+               theWebUI.setRatioColors(".stable-List-col-25");
+               theWebUI.setRatioColors(".stable-List-col-26");
             };
             if(settings){
                 rcSettingsDiv = $('<div>').attr("id","st_ratiocolor");
