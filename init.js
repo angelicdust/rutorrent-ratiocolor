@@ -19,9 +19,9 @@ levels = [0, 1, 3, 30];
 
 // Colors of the diffrent levels. [r, g, b]
 colors = [  [255, 0, 0],
-            [255, 155, 50],
-            [0, 220, 0],
-            [0, 155, 255]
+            [255, 255, 0],
+            [0, 255, 0],
+            [123, 17, 203]
          ];
 
 colorOpacity = '.5';
@@ -69,7 +69,7 @@ function colorRGB(color){
 function colorContrast(color){
     gamma = color[0]*0.299 + color[1]*0.587 + color[2]*0.114;
     c = (color[1]>160) ? 0 : ((gamma < 155) ? 255 : 0);
-    return "rgb(" + c + ", " + c + ", " + c + ")";   
+    return "rgb(" + c + ", " + c + ", " + c + ")";
 }
 
 theWebUI.setRatioColors = function(column){
