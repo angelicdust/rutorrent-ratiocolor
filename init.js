@@ -24,7 +24,7 @@ colors = [  [255, 0, 0],
             [123, 17, 203]
          ];
 
-colorOpacity = '.5';
+colorOpacity = '1';
 
 //changeWhatEnum = ["cell-background", "font"];
 
