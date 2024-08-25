@@ -31,7 +31,7 @@ colorOpacity = '.5';
 // what to change:
 // cell-background
 // font
-changeWhat = "cell-background";
+changeWhat = "font";
 
 // whether to make the text on the colored background a contrasting color(white or black, depending on the brightness)
 // true
